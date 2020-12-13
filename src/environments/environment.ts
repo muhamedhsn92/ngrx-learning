@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseClinic:'http://196.221.151.69:8085/zad-pos-medical-backend/',
+  baseGl: 'http://88.198.205.106:8080/zad-pos-gl/',
+  baseInventoryUrl: 'http://88.198.205.106:8080/zad-pos-inv/',
+
 };
 
 /*

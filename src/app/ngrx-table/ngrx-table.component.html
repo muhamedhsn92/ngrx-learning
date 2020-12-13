@@ -1,0 +1,44 @@
+<p>ngrx-table works!</p>
+<button (click)="increment()">Increment</button>
+
+<div>Current Count: {{ count$ | async }}</div>
+<div>Current Count: {{ page$ | async }}</div>
+
+<button (click)="decrement()">Decrement</button>
+
+<button (click)="reset()">Reset Counter</button>
+
+<table #table style="width: 100%;" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+    <ng-container matColumnDef="index">
+        <th mat-header-cell *matHeaderCellDef> code. </th>
+        <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="column_a">
+        <th mat-header-cell *matHeaderCellDef> desc </th>
+        <td mat-cell *matCellDef="let element"> {{element.desc}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="column_b">
+        <th mat-header-cell *matHeaderCellDef> division </th>
+        <td mat-cell *matCellDef="let element"> {{element.division}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="column_c">
+        <th mat-header-cell *matHeaderCellDef> icon </th>
+        <td mat-cell *matCellDef="let element"> {{element.icon}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" 
+    [routerLink]="['/ngrx-table/manage-ngrx-table',row.id]">
+    </tr>
+</table>
+
+<mat-paginator [pageSize]="size" (page)="onPageChange($event)" [length]="totalSize" [pageSizeOptions]="[5, 10, 25]"
+    showFirstLastButtons></mat-paginator>
